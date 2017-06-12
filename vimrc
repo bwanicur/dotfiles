@@ -62,16 +62,72 @@ nmap <Leader><Leader> <c-^>
 nnoremap <Tab> :bnext!<CR>
 nnoremap <S-Tab> :bprev!<CR><Paste>
 
+" more natural defaults for splits
+set splitbelow
+set splitright
 
+
+
+
+"
 " PLUGINS
+"
 call plug#begin('~/.local/share/nvim/plugged')
+
+
+"--- NERDTree ---
+Plug 'scrooloose/nerdtree'
+let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
+" Auto-change cwd when changing tree root
+"let NERDTreeChDirMode=2
+
+nnoremap <silent> <Leader>tt :NERDTreeToggle<CR>
+
+" <Leader>tf will tell NERDTree to highlight the file that's currently open.
+" The way this works, we open the NERDTree window first in the CWD, so the find
+" command afterward doesn't change the tree root.
+nnoremap <silent> <Leader>tf :NERDTree<CR><C-w>p:NERDTreeFind<CR>
+
+" Close vim if the only window left open is a NERDTree
+augroup local
+  autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+augroup END
+
+
+
+"--- Ctrl-P ---
+Plug 'kien/ctrlp.vim'
+set runtimepath^=~/.vim/bundle/ctrlp
+let g:ctrlp_match_window_bottom = 0
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_max_height = 20
+
+" Use the cwd for CtrlP's working path, not the directory of the open file
+let g:ctrlp_working_path_mode = 'w'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+noremap <Leader>pt :CtrlPTag<CR>
+
+
+"--- Ack.vim ---
+" Actually use Ag for doing the searching instead of Ack
+let g:ackprg = 'ag --vimgrep'
+" Don't jump to the first result automatically
+cnoreabbrev Ack Ack!
+nnoremap <Leader>f :Ack!<Space>
+
+
+
+"--- NERDCommenter ---
+Plug 'scrooloose/nerdcommenter'
+let g:NERDCustomDelimiters = {
+      \ 'ruby': { 'left': '# ' }
+      \ }
 
 Plug 'Shougo/unite.vim'
 Plug 'dracula/vim'
-
-Plug 'Yggdroot/indentLine'
-let g:indentLine_enabled = 1
-let g:indentLine_char = "⟩"
 
 Plug 'airblade/vim-gitgutter'
 
@@ -82,21 +138,11 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 set laststatus=2
 
-Plug 'ctrlpvim/ctrlp.vim', { 'on': 'CtrlP' }
-nnoremap <Leader>p :CtrlP<CR>
-nnoremap <Leader>t :CtrlP<CR>
-
 Plug 'mhinz/vim-grepper'
 " Space f p to type a search to find matches in entire project
 " Space f b to type a search to find matches in current buffers
 nnoremap <Leader>fp :Grepper<Space>-query<Space>
 nnoremap <Leader>fb :Grepper<Space>-buffers<Space>-query<Space>-<Space>
-
-Plug 'Shougo/vimfiler.vim', { 'on': 'VimFiler' }
-" Space backtick to toggle File Tree
-" Space ~ to open File Tree from current buffer’s directory
-map ` :VimFiler -explorer<CR>
-map ~ :VimFilerCurrentDir -explorer -find<CR>
 
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -119,5 +165,17 @@ xmap f <Plug>Sneak_f
 xmap F <Plug>Sneak_F
 omap f <Plug>Sneak_f
 omap F <Plug>Sneak_F
+
+
+Plug 'christoomey/vim-tmux-navigator'
+
+
+"
+"--- Ruby / RoR Stuff
+"
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-haml'
+
 
 call plug#end()

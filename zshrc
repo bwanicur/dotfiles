@@ -51,6 +51,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # aliases
+alias vim="nvim"
 alias zshconfig="vim ~/.zshrc"
 alias ll="ls -als"
 alias start_pg="pg_ctl -D /usr/local/var/postgres start"

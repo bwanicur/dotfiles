@@ -276,7 +276,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>2035 1115 796 473 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>16 186 2650 1483 0 0 3008 1669 </string>
+	<string>16 214 2580 1455 0 0 3008 1669 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>4 4 2410 1665 0 0 3008 1669 </string>
 	<key>New Bookmarks</key>
@@ -1577,6 +1577,8 @@
 	</array>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>0</integer>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -1612,6 +1614,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/benne/dotfiles</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
