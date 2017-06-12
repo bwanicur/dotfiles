@@ -4,14 +4,16 @@ export ZSH=/Users/benne/.oh-my-zsh
 # PATH
 export PATH="$PATH:`yarn global bin`"
 
+export TERM="xterm-256color"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history)
-POWERLEVEL9K_DIR_HOME_FOREGROUND='white'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='white'
+# POWERLEVEL9K_DIR_HOME_FOREGROUND='white'
+# POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='white'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
