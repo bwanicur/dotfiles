@@ -46,18 +46,24 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git web_search)
 
 source $ZSH/oh-my-zsh.sh
+source ~/dotfiles/zsh_includes/tmuxinator.zsh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # aliases
 alias vim="nvim"
-alias zshconfig="vim ~/.zshrc"
+export EDITOR=vim
+
+alias vimconfig="vim ~/dotfiles/vimrc"
+alias zshconfig="vim ~/dotfiles/zshrc"
 alias ll="ls -als"
-alias start_pg="pg_ctl -D /usr/local/var/postgres start"
-alias stop_pg="pg_ctl -D /usr/local/var/postgres stop"
 alias proj="cd /Users/benne/projects"
 alias deluxe="cd /Users/benne/projects/deluxeondemand/poirot"
 
 
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"

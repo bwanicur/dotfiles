@@ -1,14 +1,13 @@
 " Set standard file encoding
 set encoding=utf8
 
+set autoread
+
 " No special per file vim override configs
 set nomodeline
 
-" Stop word wrapping
-set nowrap
-
 " Except... on Markdown. That's good stuff.
-autocmd FileType markdown setlocal wrap
+autocmd FileType html,markdown setlocal wrap
 
 " Adjust system undo levels
 set undolevels=100
@@ -39,15 +38,27 @@ set sidescrolloff=5
 " Remap leader to space
 let mapleader="\<SPACE>"
 
+" Folding
+set foldenable
+"" Setting foldmethod to syntax will cause all sorts of problems.
+"" <https://github.com/vim-ruby/vim-ruby/issues/8#issuecomment-327162>
+"" And also: <http://vim.wikia.com/wiki/Keep_folds_closed_while_inserting_text>
+set foldmethod=indent
+set foldlevel=6    " start with no folding, but ready to go
+set foldminlines=0 " Allow folding single lines
+set foldnestmax=6  " Set max fold nesting level
+"set foldcolumn=4 " Show fold column
+
+
 " Disable mouse support ? hrmmm, not sure yet
 " set mouse=r
 " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1"
 
 " resize panes with arrow keys
-nnoremap <Left> :vertical resize -1<CR>
-nnoremap <Right> :vertical resize +1<CR>
-nnoremap <Up> :resize -1<CR>
-nnoremap <Down> :resize +1<CR>
+nnoremap <Left> :vertical resize -10<CR>
+nnoremap <Right> :vertical resize +10<CR>
+nnoremap <Up> :resize -10<CR>
+nnoremap <Down> :resize +10<CR>
 
 " Disable arrow keys completely in Insert Mode
 imap <up> <nop>
@@ -68,11 +79,16 @@ set splitright
 
 
 
-
 "
 " PLUGINS
 "
 call plug#begin('~/.local/share/nvim/plugged')
+
+" not sure why i cannot just set colorscheme ... ?
+syntax on
+set background=dark
+" colorscheme monokai-chris
+" autocmd VimEnter * colorscheme monokai-chris
 
 
 "--- NERDTree ---
@@ -112,12 +128,12 @@ noremap <Leader>pt :CtrlPTag<CR>
 
 
 "--- Ack.vim ---
+Plug 'mileszs/ack.vim'
 " Actually use Ag for doing the searching instead of Ack
 let g:ackprg = 'ag --vimgrep'
 " Don't jump to the first result automatically
 cnoreabbrev Ack Ack!
 nnoremap <Leader>f :Ack!<Space>
-
 
 
 "--- NERDCommenter ---
@@ -127,24 +143,17 @@ let g:NERDCustomDelimiters = {
       \ }
 
 Plug 'Shougo/unite.vim'
-Plug 'dracula/vim'
-
 Plug 'airblade/vim-gitgutter'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Plug 'tpope/vim-fugitive'
 
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 set laststatus=2
 
-Plug 'mhinz/vim-grepper'
-" Space f p to type a search to find matches in entire project
-" Space f b to type a search to find matches in current buffers
-nnoremap <Leader>fp :Grepper<Space>-query<Space>
-nnoremap <Leader>fb :Grepper<Space>-buffers<Space>-query<Space>-<Space>
 
-
+"--- Deoplete (autocomplete) ---
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -169,6 +178,12 @@ omap F <Plug>Sneak_F
 
 Plug 'christoomey/vim-tmux-navigator'
 
+" HTML / CSS
+Plug 'sukima/xmledit'
+Plug 'mattn/emmet-vim'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
 
 "
 "--- Ruby / RoR Stuff
@@ -176,6 +191,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-haml'
-
-
+Plug 'slim-template/vim-slim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'thoughtbot/vim-rspec'
+let g:rspec_command = "bin/rspec {spec}"
+let g:ruby_foldable_groups = 'class method'
 call plug#end()

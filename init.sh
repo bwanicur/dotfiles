@@ -10,7 +10,7 @@ brew tap caskroom/fonts
 brew cask install font-fira-code
 
 # change shell to zsh
-# chsh -s /usr/local/bin/zsh
+chsh -s /usr/local/bin/zsh
 
 # Neovim and vim-plug
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
