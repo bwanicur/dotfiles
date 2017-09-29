@@ -84,12 +84,15 @@ set splitright
 "
 call plug#begin('~/.local/share/nvim/plugged')
 
-" not sure why i cannot just set colorscheme ... ?
+" COLORSCHEME
+Plug 'vim-scripts/mayansmoke'
+Plug 'hzchirs/vim-material'
+Plug 'rakr/vim-one'
+let g:airline_theme='one'
 syntax on
-set background=dark
-" colorscheme monokai-chris
-" autocmd VimEnter * colorscheme monokai-chris
-
+"set background=dark
+set background=light
+autocmd VimEnter * colorscheme one 
 
 "--- NERDTree ---
 Plug 'scrooloose/nerdtree'
@@ -181,6 +184,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " HTML / CSS
 Plug 'sukima/xmledit'
 Plug 'mattn/emmet-vim'
+Plug 'Valloric/MatchTagAlways'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
