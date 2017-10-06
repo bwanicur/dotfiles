@@ -1,6 +1,8 @@
 " Set standard file encoding
 set encoding=utf8
 
+set guicursor+=n-v-c:blinkon0
+
 set autoread
 
 " No special per file vim override configs
@@ -84,6 +86,7 @@ set splitright
 "
 call plug#begin('~/.local/share/nvim/plugged')
 
+
 " COLORSCHEME
 Plug 'vim-scripts/mayansmoke'
 Plug 'hzchirs/vim-material'
@@ -145,7 +148,6 @@ let g:NERDCustomDelimiters = {
       \ 'ruby': { 'left': '# ' }
       \ }
 
-Plug 'Shougo/unite.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
