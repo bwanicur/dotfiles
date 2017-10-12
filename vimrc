@@ -93,9 +93,9 @@ Plug 'hzchirs/vim-material'
 Plug 'rakr/vim-one'
 let g:airline_theme='one'
 syntax on
-"set background=dark
-set background=light
-autocmd VimEnter * colorscheme one 
+" set background=dark
+" set background=light
+" autocmd VimEnter * colorscheme one 
 
 "--- NERDTree ---
 Plug 'scrooloose/nerdtree'
