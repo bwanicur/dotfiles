@@ -1,7 +1,7 @@
 " Set standard file encoding
 set encoding=utf8
 
-set guicursor+=n-v-c:blinkon0
+set guicursor+=n-v-c:blinkon1
 
 set autoread
 
@@ -72,8 +72,8 @@ imap <right> <nop>
 nmap <Leader><Leader> <c-^>
 
 " next / previous tabs
-nnoremap <Tab> :bnext!<CR>
-nnoremap <S-Tab> :bprev!<CR><Paste>
+nnoremap <S-Tab> :bnext!<CR>
+" nnoremap <S-Tab> :bprev!<CR><Paste>
 
 " more natural defaults for splits
 set splitbelow
@@ -87,12 +87,9 @@ set splitright
 call plug#begin('~/.local/share/nvim/plugged')
 
 
-" COLORSCHEME
-Plug 'vim-scripts/mayansmoke'
-Plug 'hzchirs/vim-material'
-Plug 'rakr/vim-one'
-let g:airline_theme='one'
 syntax on
+" COLORSCHEME
+" let g:airline_theme='one'
 " set background=dark
 " set background=light
 " autocmd VimEnter * colorscheme one 

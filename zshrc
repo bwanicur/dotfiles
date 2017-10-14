@@ -11,7 +11,9 @@ export TERM="xterm-256color"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history)
+POWERLEVEL9K_DISABLE_RPROMPT=true
+# POWERLEVEL9K_COLOR_SCHEME='light'
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history)
 # POWERLEVEL9K_DIR_HOME_FOREGROUND='white'
 # POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='white'
 
@@ -60,7 +62,7 @@ alias zshconfig="vim ~/dotfiles/zshrc"
 alias ll="ls -als"
 alias proj="cd /Users/benne/projects"
 alias deluxe="cd /Users/benne/projects/deluxeondemand/poirot"
-
+alias dirsize="du -hs"
 
 
 
