@@ -80,26 +80,37 @@ set splitbelow
 set splitright
 
 
+"
+" MACROS
+"
+" TODO: figure out how to copy the macro command and paste
+
+syntax on
+" COLORSCHEME
+" set background=dark
+" set background=light
+"
+" setting the colorscheme in terminal for now
+" autocmd VimEnter * colorscheme one
 
 "
 " PLUGINS
 "
 call plug#begin('~/.local/share/nvim/plugged')
 
+"--- Better Whitespace --
+Plug 'ntpeters/vim-better-whitespace'
+let g:better_whitespace_enabled=1
 
-syntax on
-" COLORSCHEME
-" let g:airline_theme='one'
-" set background=dark
-" set background=light
-" autocmd VimEnter * colorscheme one 
+set list
+set listchars=trail:.,tab:_>
 
 "--- NERDTree ---
 Plug 'scrooloose/nerdtree'
-let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$', '\.DS_Store']
 " Auto-change cwd when changing tree root
-"let NERDTreeChDirMode=2
-
+" let NERDTreeChDirMode=2
 nnoremap <silent> <Leader>tt :NERDTreeToggle<CR>
 
 " <Leader>tf will tell NERDTree to highlight the file that's currently open.
@@ -124,8 +135,17 @@ let g:ctrlp_max_height = 20
 " Use the cwd for CtrlP's working path, not the directory of the open file
 let g:ctrlp_working_path_mode = 'w'
 if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " TODO: this maybe heavy handed way of ignoring these files globally
+  " also - won't catch nested node_modules directories
+  let g:ctrlp_user_command = 'ag %s --ignore "*node_modules" -U -l --nocolor -g ""'
 endif
+
+" not working with ag ?
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir':  '\v[\/]\.(git|hg|svn)',
+"  \ 'file': '\v\.(exe|so|dll|DS_Store)$',
+"  \ }
+
 
 noremap <Leader>pt :CtrlPTag<CR>
 
@@ -148,6 +168,8 @@ let g:NERDCustomDelimiters = {
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='papercolor'
+
 " Plug 'tpope/vim-fugitive'
 
 let g:airline#extensions#tabline#enabled=1
@@ -160,6 +182,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+" async linting engine (replaces syntastic)
 Plug 'w0rp/ale'
 
 Plug 'justinmk/vim-sneak'
@@ -195,8 +218,20 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-haml'
 Plug 'slim-template/vim-slim'
-Plug 'kchmck/vim-coffee-script'
 Plug 'thoughtbot/vim-rspec'
 let g:rspec_command = "bin/rspec {spec}"
 let g:ruby_foldable_groups = 'class method'
+
+
+
+"
+"--- JS / React Stuff
+"
+Plug 'pangloss/vim-javascript'
+Plug 'kchmck/vim-coffee-script'
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+Plug 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0
+
 call plug#end()

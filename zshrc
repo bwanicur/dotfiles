@@ -61,9 +61,13 @@ alias vimconfig="vim ~/dotfiles/vimrc"
 alias zshconfig="vim ~/dotfiles/zshrc"
 alias ll="ls -als"
 alias proj="cd /Users/benne/projects"
-alias deluxe="cd /Users/benne/projects/deluxeondemand/poirot"
 alias dirsize="du -hs"
 
+alias jazz_email_list="echo 'http://eepurl.com/NxOeX' | pbcopy"
+
+# Niche Investments
+alias ni_stage="ssh root@stage.mhbay.com"
+alias ni_prod="ssh root@mhbay.com"
 
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
