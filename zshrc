@@ -45,7 +45,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web_search)
+plugins=(git web_search zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/zsh_includes/tmuxinator.zsh
@@ -64,11 +64,6 @@ alias proj="cd /Users/benne/projects"
 alias dirsize="du -hs"
 
 alias jazz_email_list="echo 'http://eepurl.com/NxOeX' | pbcopy"
-
-# Niche Investments
-alias ni_stage="ssh root@stage.mhbay.com"
-alias ni_prod="ssh root@mhbay.com"
-
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
