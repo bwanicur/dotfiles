@@ -1,9 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/benne/.oh-my-zsh
 
-# PATH
-export PATH="$PATH:`yarn global bin`"
-
 export TERM="xterm-256color"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -55,16 +52,17 @@ source ~/dotfiles/zsh_includes/tmuxinator.zsh
 
 # aliases
 alias vim="nvim"
-export EDITOR=vim
+export EDITOR=atom
 
-alias vimconfig="vim ~/dotfiles/vimrc"
-alias zshconfig="vim ~/dotfiles/zshrc"
+alias vimconfig="atom ~/dotfiles/vimrc"
+alias zshconfig="atom ~/dotfiles/zshrc"
 alias ll="ls -als"
 alias proj="cd /Users/benne/projects"
 alias dirsize="du -hs"
 
 alias jazz_email_list="echo 'http://eepurl.com/NxOeX' | pbcopy"
 
+export GOPATH=/Users/benne/go
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+export PATH="$PATH:$HOME/.rvm/bin:$GOPATH/bin"
